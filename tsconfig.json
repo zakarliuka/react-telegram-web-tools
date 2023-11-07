@@ -1,0 +1,19 @@
+{
+  "include": ["src", "global.d.ts"],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noUncheckedIndexedAccess": true,
+    "importHelpers": true,
+    "strictNullChecks": true
+  }
+}
