@@ -8,7 +8,7 @@ const useCloudStorage = () => {
 
   const getItem = useCallback(
     (key: string) =>
-      new Promise<string>((resolve, reject) => {
+      new Promise<string | undefined>((resolve, reject) => {
         cloudStorage?.getItem(key, (error, value) => {
           if (!error) {
             resolve(value);

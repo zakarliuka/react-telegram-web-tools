@@ -21,11 +21,16 @@ const MainButton: React.FC<{
       is_active: isActive,
       is_visible: true,
     });
+
+    return () => {
+      mainButton?.hide();
+    };
   }, [mainButton, color, isActive, text, textColor]);
 
   useEffect(() => {
     if (isProgressVisible) {
       mainButton?.showProgress();
+      mainButton?.disable();
     } else {
       mainButton?.hideProgress();
     }

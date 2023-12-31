@@ -1,11 +1,7 @@
 'use client';
 
-import { TelegramWebApp } from '@zakarliuka/tg-webapp-types';
+import WebApp from '@twa-dev/sdk';
+import { WebApp as WebAppTypes } from '@twa-dev/types';
 import { createContext } from 'react';
 
-export const getWebApp = () =>
-  typeof window !== 'undefined' && 'Telegram' in window
-    ? Telegram.WebApp
-    : null;
-
-export const webAppContext = createContext<TelegramWebApp.WebApp | null>(null);
+export const webAppContext = createContext<WebAppTypes | null>(WebApp);

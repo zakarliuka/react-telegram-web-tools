@@ -5,7 +5,6 @@ import { webAppContext } from './context';
 
 const useWebApp = () => {
   const context = useContext(webAppContext);
-
   return context;
 };
 

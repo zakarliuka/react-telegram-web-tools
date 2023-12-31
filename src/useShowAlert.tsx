@@ -8,7 +8,7 @@ const useShowAlert = () => {
 
   return useCallback(
     (message: string) => {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         try {
           webApp?.showAlert(message, resolve);
         } catch (e) {

@@ -1,17 +1,15 @@
 'use client';
 
-import { TelegramWebApp } from '@zakarliuka/tg-webapp-types';
+import { WebApp } from '@twa-dev/types';
+
 import { useCallback } from 'react';
 import useWebApp from './useWebApp';
 
 const useScanQrPopup = () => {
   const webApp = useWebApp();
 
-  const showScanQrPopup = useCallback(
-    (
-      params: TelegramWebApp.ScanQrPopupParams = {},
-      callback?: (text: string) => void,
-    ) => webApp?.showScanQrPopup?.(params, callback),
+  const showScanQrPopup = useCallback<WebApp['showScanQrPopup']>(
+    (params = {}, callback) => webApp?.showScanQrPopup?.(params, callback),
     [webApp],
   );
 

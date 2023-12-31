@@ -1,6 +1,7 @@
 'use client';
 
-import { TelegramWebApp } from '@zakarliuka/tg-webapp-types';
+import { HapticFeedback } from '@twa-dev/types';
+
 import { useCallback } from 'react';
 import useWebApp from './useWebApp';
 
@@ -9,14 +10,14 @@ const useHapticFeedback = () => {
   const HapticFeedback = webApp?.HapticFeedback;
 
   const impactOccurred = useCallback(
-    (...args: Parameters<TelegramWebApp.HapticFeedback['impactOccurred']>) =>
+    (...args: Parameters<HapticFeedback['impactOccurred']>) =>
       HapticFeedback?.impactOccurred(...args),
     [HapticFeedback],
   );
+
   const notificationOccurred = useCallback(
-    (
-      ...args: Parameters<TelegramWebApp.HapticFeedback['notificationOccurred']>
-    ) => HapticFeedback?.notificationOccurred(...args),
+    (...args: Parameters<HapticFeedback['notificationOccurred']>) =>
+      HapticFeedback?.notificationOccurred(...args),
     [HapticFeedback],
   );
   const selectionChanged = useCallback(

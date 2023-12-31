@@ -1,6 +1,6 @@
 # React Telegram WebApp Tools
 
-This React library provides a set of tools to create Telegram WebApps with ease.  For more information on Telegram Web Apps, please visit the [official documentation](https://core.telegram.org/bots/webapps).
+This React library provides a set of tools to create Telegram WebApps with ease. For more information on Telegram Web Apps, please visit the [official documentation](https://core.telegram.org/bots/webapps).
 
 ## Installation
 
@@ -14,15 +14,16 @@ npm install @zakarliuka/react-telegram-web-tools --save
 
 **Initialization Step:**
 
-Before you can start using the library, it's crucial to set up the Telegram Web App context.
- [official documentation](https://core.telegram.org/bots/webapps)
+Before you can start using the library, it's crucial to set up the Telegram Web App context ([official documentation](https://core.telegram.org/bots/webapps)). Library uses [@twa-dev/sdk](https://github.com/twa-dev/SDK). So you **DO NOT** need to use old fashion way to connect WebApp with Telegram Client.
+
+Follow next steps to start:
 
 ```javascript
 import { WebAppProvider } from '@zakarliuka/react-telegram-web-tools';
 
 <WebAppProvider>
-    {/* Your Next.js Telegram web app components and functionality */}
-</WebAppProvider>
+  {/* Your React Telegram web app components and functionality */}
+</WebAppProvider>;
 ```
 
 **For Next.js:**
@@ -30,38 +31,39 @@ import { WebAppProvider } from '@zakarliuka/react-telegram-web-tools';
 If you are building your Telegram web app using Next.js, you should create and use next provider:
 
 ```javascript
-"use client";
+'use client';
 
-import { getWebApp, webAppContext } from "@zakarliuka/react-telegram-web-tools";
-import Script from "next/script";
-import React, { useState } from "react";
+import dynamic from 'next/dynamic';
 
-const WebAppProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [webApp, setWebApp] = useState(getWebApp());
-  return (
-    <>
-      <Script
-        src="https://telegram.org/js/telegram-web-app.js"
-        onLoad={() => {
-          const webapp = getWebApp();
-          webapp?.ready();
-          setWebApp(webapp);
-        }}
-      />
-      <webAppContext.Provider value={webApp}>{children}</webAppContext.Provider>
-    </>
-  );
-};
-
-export default WebAppProvider;
+export const WebAppProvider = dynamic(
+  () =>
+    import('@zakarliuka/react-telegram-web-tools').then(v => v.WebAppProvider),
+  {
+    ssr: false,
+  },
+);
 ```
 
 ```js
 
+export default function WebAppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <WebAppProvider>
+      {children}
+    </WebAppProvider>
+  );
+}
+```
+
+```js
 export const SomeComponent: React.FC<{}> = () => {
   const showConfirm = useShowConfirm()
   const showPopup = useShowPopup();
-  
+
   const handleSubmit = () => {
     showPopup({
       title: "hi there!",

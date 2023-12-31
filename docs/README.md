@@ -4,6 +4,12 @@
 
 ## Table of contents
 
+### Namespaces
+
+- [BackButton](modules/BackButton.md)
+- [MainButton](modules/MainButton.md)
+- [WebAppProvider](modules/WebAppProvider.md)
+
 ### Variables
 
 - [webAppContext](README.md#webappcontext)
@@ -13,7 +19,6 @@
 - [BackButton](README.md#backbutton)
 - [MainButton](README.md#mainbutton)
 - [WebAppProvider](README.md#webappprovider)
-- [getWebApp](README.md#getwebapp)
 - [useClose](README.md#useclose)
 - [useClosingConfirmation](README.md#useclosingconfirmation)
 - [useCloudItem](README.md#useclouditem)
@@ -103,16 +108,6 @@ ___
 
 ___
 
-### getWebApp
-
-▸ **getWebApp**(): ``null`` \| `WebApp`
-
-#### Returns
-
-``null`` \| `WebApp`
-
-___
-
 ### useClose
 
 ▸ **useClose**(): () => `undefined` \| `void`
@@ -161,7 +156,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `data` | ``null`` \| `Record`\<`string`, `string`\> |
+| `data` | ``null`` \| `Record`\<`string`, `undefined` \| `string`\> |
 | `error` | ``null`` \| `Error` |
 | `loading` | `boolean` |
 
@@ -177,7 +172,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `getItem` | (`key`: `string`) => `Promise`\<`string`\> |
+| `getItem` | (`key`: `string`) => `Promise`\<`undefined` \| `string`\> |
 | `getItems` | (`key`: `string`[]) => `Promise`\<`Record`\<`string`, `string`\>\> |
 | `getKeys` | () => `Promise`\<`string`[]\> |
 | `removeItem` | (`key`: `string`) => `Promise`\<`void`\> |
@@ -223,20 +218,20 @@ ___
 
 ### useOnEvent
 
-▸ **useOnEvent**\<`EventType`\>(`event`, `cb`): `void`
+▸ **useOnEvent**\<`T`\>(`eventName`, `callback`): `void`
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `EventType` | extends keyof `EventDataMap` |
+| `T` | extends `EventNames` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `event` | `EventType` |
-| `cb` | (`val`: `EventDataMap`[`EventType`]) => `void` |
+| `eventName` | `T` |
+| `callback` | (`params`: `EventParams`[`T`]) => `unknown` |
 
 #### Returns
 
@@ -316,11 +311,11 @@ ___
 
 ### useScanQrPopup
 
-▸ **useScanQrPopup**(): readonly [(`params`: `ScanQrPopupParams`, `callback?`: (`text`: `string`) => `void`) => `undefined` \| `void`, () => `undefined` \| `void`]
+▸ **useScanQrPopup**(): readonly [(`params`: `ScanQrPopupParams`, `callback?`: (`text`: `string`) => ``true`` \| `void`) => `void`, () => `undefined` \| `void`]
 
 #### Returns
 
-readonly [(`params`: `ScanQrPopupParams`, `callback?`: (`text`: `string`) => `void`) => `undefined` \| `void`, () => `undefined` \| `void`]
+readonly [(`params`: `ScanQrPopupParams`, `callback?`: (`text`: `string`) => ``true`` \| `void`) => `void`, () => `undefined` \| `void`]
 
 ___
 
@@ -348,13 +343,13 @@ ___
 
 ### useShowAlert
 
-▸ **useShowAlert**(): (`message`: `string`) => `Promise`\<`unknown`\>
+▸ **useShowAlert**(): (`message`: `string`) => `Promise`\<`void`\>
 
 #### Returns
 
 `fn`
 
-▸ (`message`): `Promise`\<`unknown`\>
+▸ (`message`): `Promise`\<`void`\>
 
 ##### Parameters
 
@@ -364,7 +359,7 @@ ___
 
 ##### Returns
 
-`Promise`\<`unknown`\>
+`Promise`\<`void`\>
 
 ___
 
@@ -414,23 +409,24 @@ ___
 
 ### useSwitchInlineQuery
 
-▸ **useSwitchInlineQuery**(): (...`args`: [query: string, choose\_chat\_types?: string[]]) => `undefined` \| `void`
+▸ **useSwitchInlineQuery**(): (`query`: `string`, `chooseChatTypes?`: (``"users"`` \| ``"bots"`` \| ``"groups"`` \| ``"channels"``)[]) => `void`
 
 #### Returns
 
 `fn`
 
-▸ (`...args`): `undefined` \| `void`
+▸ (`query`, `chooseChatTypes?`): `void`
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...args` | [query: string, choose\_chat\_types?: string[]] |
+| `query` | `string` |
+| `chooseChatTypes?` | (``"users"`` \| ``"bots"`` \| ``"groups"`` \| ``"channels"``)[] |
 
 ##### Returns
 
-`undefined` \| `void`
+`void`
 
 ___
 
@@ -444,9 +440,9 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `colorScheme` | ``null`` \| `string` |
-| `setBackgroundColor` | (`color`: `string`) => `void` |
-| `setHeaderColor` | (`color`: `string`) => `void` |
+| `colorScheme` | ``null`` \| ``"light"`` \| ``"dark"`` |
+| `setBackgroundColor` | (`color`: \`#$\{string}\` \| ``"bg_color"`` \| ``"secondary_bg_color"``) => `void` |
+| `setHeaderColor` | (`color`: \`#$\{string}\` \| ``"bg_color"`` \| ``"secondary_bg_color"``) => `void` |
 | `theme` | ``null`` \| `ThemeParams` |
 
 ___
@@ -462,7 +458,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `isVersionAtLeast` | (`version`: `string`) => `undefined` \| `boolean` |
-| `platform` | ``null`` \| `string` |
+| `platform` | ``null`` \| `Platforms` |
 | `version` | ``null`` \| `string` |
 
 ___

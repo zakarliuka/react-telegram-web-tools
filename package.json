@@ -1,9 +1,11 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "@zakarliuka/react-telegram-web-tools",
   "description": "React components for Telegram WebApp",
   "type": "module",
-  "files": ["/dist/react-telegram-web-tools"],
+  "files": [
+    "/dist/react-telegram-web-tools"
+  ],
   "types": "./dist/react-telegram-web-tools/types/index.d.ts",
   "source": "./src/index.ts",
   "exports": {
@@ -13,9 +15,9 @@
   },
   "main": "./dist/react-telegram-web-tools/react-telegram-web-tools.cjs",
   "module": "/dist/react-telegram-web-tools/react-telegram-web-tools.module.cjs",
-  "unpkg": "/dist/react-telegram-web-tools/react-telegram-web-tools.umd.cjs",  
+  "unpkg": "/dist/react-telegram-web-tools/react-telegram-web-tools.umd.cjs",
   "scripts": {
-    "build": "rm -rf ./dist/*; microbundle build --sourcemap=false",
+    "build": "rm -rf ./dist/*; microbundle build --sourcemap=false --globals @twa-dev/sdk=WebApp",
     "dev": "npm run build && microbundle watch --compress=false",
     "docs": "typedoc",
     "format": "prettier --write .",
@@ -44,20 +46,20 @@
   },
   "homepage": "https://github.com/zakarliuka/react-telegram-web-tools#readme",
   "peerDependencies": {
-    "@zakarliuka/tg-webapp-types": ">=1.0.7",
+    "@twa-dev/sdk": "^6.9.2",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@types/react": "^18",
-    "@types/react-test-renderer": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
+    "@types/react-test-renderer": "^18.0.7",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "microbundle": "^0.15.1",
-    "prettier": "^3.0.3",
-    "typedoc": "^0.25.3",
+    "prettier": "^3.1.1",
+    "typedoc": "^0.25.4",
     "typedoc-plugin-markdown": "^3.17.1"
   }
 }

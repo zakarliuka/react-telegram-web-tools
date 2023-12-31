@@ -1,16 +1,14 @@
 'use client';
 
-import { TelegramWebApp } from '@zakarliuka/tg-webapp-types';
 import { useCallback } from 'react';
 import useWebApp from './useWebApp';
 
-type OpenLinkArgs = Parameters<TelegramWebApp.WebApp['openLink']>;
-
+import { WebApp } from '@twa-dev/types';
 const useOpenLink = () => {
   const webApp = useWebApp();
 
-  const openLink = useCallback(
-    (...args: OpenLinkArgs) => webApp?.openLink?.(...args),
+  const openLink = useCallback<WebApp['openLink']>(
+    (...args) => webApp?.openLink?.(...args),
     [webApp],
   );
   const openTelegramLink = useCallback(

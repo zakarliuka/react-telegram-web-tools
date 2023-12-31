@@ -8,7 +8,7 @@ const useCloudItem = (key: string | string[]) => {
 
   const [state, setState] = useState<{
     loading: boolean;
-    data: Record<string, string> | null;
+    data: Record<string, string | undefined> | null;
     error: Error | null;
   }>({ loading: false, data: null, error: null });
 

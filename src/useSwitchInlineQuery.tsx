@@ -1,16 +1,14 @@
 'use client';
 
-import { TelegramWebApp } from '@zakarliuka/tg-webapp-types';
+import { WebApp } from '@twa-dev/types';
 import { useCallback } from 'react';
 import useWebApp from './useWebApp';
-
-type SwitchInlineQuery = Parameters<TelegramWebApp.WebApp['switchInlineQuery']>;
 
 const useSwitchInlineQuery = () => {
   const webApp = useWebApp();
 
-  return useCallback(
-    (...args: SwitchInlineQuery) => webApp?.switchInlineQuery?.(...args),
+  return useCallback<WebApp['switchInlineQuery']>(
+    (...args) => webApp?.switchInlineQuery?.(...args),
     [webApp],
   );
 };
