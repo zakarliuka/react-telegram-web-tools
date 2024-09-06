@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "@zakarliuka/react-telegram-web-tools",
   "description": "React components for Telegram WebApp",
   "type": "module",
@@ -46,20 +46,20 @@
   },
   "homepage": "https://github.com/zakarliuka/react-telegram-web-tools#readme",
   "peerDependencies": {
-    "@twa-dev/sdk": "^6.9.2",
-    "react": "^18",
-    "react-dom": "^18"
+    "@twa-dev/sdk": "^7.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18",
-    "@types/react-test-renderer": "^18.0.7",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "@types/react": "^18.3.5",
+    "@types/react-test-renderer": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint-plugin-react": "^7.35.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "microbundle": "^0.15.1",
-    "prettier": "^3.1.1",
-    "typedoc": "^0.25.4",
+    "prettier": "^3.3.3",
+    "typedoc": "^0.25.13",
     "typedoc-plugin-markdown": "^3.17.1"
   }
 }

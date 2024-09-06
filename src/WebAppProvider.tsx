@@ -1,12 +1,11 @@
 'use client';
 
-import WebApp from '@twa-dev/sdk';
 import { Telegram, WebApp as WebAppType } from '@twa-dev/types';
 import React, { useEffect, useState } from 'react';
 import { webAppContext } from './context';
 
 const WebAppProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [twa, setTwa] = useState<WebAppType | null>(WebApp);
+  const [twa, setTwa] = useState<WebAppType | null>(null);
   useEffect(() => {
     const webapp = (window as unknown as Window & { Telegram: Telegram })
       .Telegram.WebApp;
