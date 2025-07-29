@@ -1,5 +1,3 @@
-'use client';
-
 import { PopupParams } from '@twa-dev/types';
 import { useCallback } from 'react';
 import useWebApp from './useWebApp';

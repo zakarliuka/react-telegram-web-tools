@@ -1,16 +1,14 @@
-'use client';
-
 import { useCallback } from 'react';
 import useWebApp from './useWebApp';
 
-const useOpenInvoice = () => {
+const useShowAlert = () => {
   const webApp = useWebApp();
 
   return useCallback(
-    (url: string) => {
-      return new Promise((resolve, reject) => {
+    (message: string) => {
+      return new Promise<void>((resolve, reject) => {
         try {
-          webApp?.openInvoice(url, resolve);
+          webApp?.showAlert(message, resolve);
         } catch (e) {
           reject(e);
         }
@@ -20,4 +18,4 @@ const useOpenInvoice = () => {
   );
 };
 
-export default useOpenInvoice;
+export default useShowAlert;

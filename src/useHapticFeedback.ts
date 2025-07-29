@@ -1,5 +1,3 @@
-'use client';
-
 import { HapticFeedback } from '@twa-dev/types';
 
 import { useCallback } from 'react';

@@ -1,4 +1,3 @@
-'use client';
 import { WebApp } from '@twa-dev/types';
 import { useEffect } from 'react';
 import useWebApp from './useWebApp';

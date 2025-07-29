@@ -1,5 +1,3 @@
-'use client';
-
 import useWebApp from './useWebApp';
 
 const useInitData = () => {
